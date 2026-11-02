@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Enquiry data contains personal contact details. Only Admin SDK Cloud Functions may access it.
+    match /enquiries/{enquiryId} {
+      allow read, write: if false;
+    }
+  }
+}
